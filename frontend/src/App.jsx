@@ -12,6 +12,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Package from "./pages/Package";
 import PackageDetails from "./components/package/PackageDetails";
 import CreatePackage from "./components/package/CreatePackage";
+import EmployeeDashboard from "./components/employee/EmployeeDashboard";
+import EmployeeLogin from "./components/employee/EmployeeLogin";
 
 function App() {
   return (
@@ -70,6 +72,9 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+          <Route path="/employeeDashboard" element={<EmployeeDashboard />} />
+          <Route path="/employeeLogin" element={<EmployeeLogin />} />
           <Route path="/unauthorize" element={<Unauthorized />} />
 
           {/*//remove later*/}

@@ -45,7 +45,6 @@ export const useAddEmployee = () => {
     },
   });
 };
-
 // Fetch single user by ID
 export const useEmployeeById = (id) => {
   return useQuery({
@@ -58,9 +57,7 @@ export const useEmployeeById = (id) => {
     enabled: !!id,
   });
 };
-
 // Update user
-
 export const useUpdateEmployee = (id) => {
   const queryClient = useQueryClient();
   return useMutation({
@@ -72,9 +69,7 @@ export const useUpdateEmployee = (id) => {
     onSuccess: () => queryClient.invalidateQueries(["employee", id]),
   });
 };
-
 // Delete user
-
 export const useDeleteEmployee = () => {
   const queryClient = useQueryClient();
   return useMutation({
@@ -82,5 +77,7 @@ export const useDeleteEmployee = () => {
     onSuccess: () => queryClient.invalidateQueries(["employees"]),
   });
 };
-
-
+export const useEmployeeLogin = (credentials) => {
+  const { data } = api.post(`/auth/employee-login`, credentials);
+  return data;
+};
