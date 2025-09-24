@@ -13,7 +13,9 @@ const RegisterEmployee = () => {
 
   const onSubmit = (data) => {
     addEmployee.mutate(data);
-    console.log(data);
+    localStorage.setItem("role", data.role);
+
+    console.log(data.role);
     reset();
     toast.success("user Register successfully!");
   };

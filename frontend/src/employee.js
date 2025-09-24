@@ -77,7 +77,19 @@ export const useDeleteEmployee = () => {
     onSuccess: () => queryClient.invalidateQueries(["employees"]),
   });
 };
-export const useEmployeeLogin = (credentials) => {
-  const { data } = api.post(`/auth/employee-login`, credentials);
-  return data;
+
+export const useEmployeeLogin = () => {
+  const token = localStorage.getItem("token");
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (credentials) => {
+      const response = await api.post("/auth/employee-login", credentials);
+      console.log("cre", response.data);
+
+      return response.data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+    },
+  });
 };

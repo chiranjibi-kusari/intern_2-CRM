@@ -13,4 +13,4 @@ api.interceptors.request.use((config) => {
 });
 export default api;
 
-export const roles = ["ROLE_SALES", "ROLE_ACCOUNTANT"];
+export const roles = ["ROLE_SALES", "ROLE_ADMIN"];

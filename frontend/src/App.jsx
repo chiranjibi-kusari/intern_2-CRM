@@ -24,7 +24,7 @@ function App() {
           <Route
             path="/admin"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
                 <AdminDashboard />
               </ProtectedRoute>
             }
@@ -33,7 +33,7 @@ function App() {
           <Route
             path="/emp/:id"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
                 <ViewById />
               </ProtectedRoute>
             }
@@ -41,7 +41,7 @@ function App() {
           <Route
             path="/emp/:id/edit"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
                 <EditEmo />
               </ProtectedRoute>
             }
@@ -50,7 +50,7 @@ function App() {
           <Route
             path="/createPackage"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
                 <CreatePackage />
               </ProtectedRoute>
             }
@@ -59,7 +59,7 @@ function App() {
           <Route
             path="/tour-package/:id"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
                 <PackageDetails />
               </ProtectedRoute>
             }
@@ -67,15 +67,22 @@ function App() {
           <Route
             path="/tour-package/:id/edit"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute allowedRoles={["ROLE_ADMIN"]}>
                 <CreatePackage />
               </ProtectedRoute>
             }
           />
 
-          <Route path="/employeeDashboard" element={<EmployeeDashboard />} />
+          <Route
+            path="/employeeDashboard"
+            element={
+              <ProtectedRoute allowedRoles={["ROLE_SALES"]}>
+                <EmployeeDashboard />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/employeeLogin" element={<EmployeeLogin />} />
-          <Route path="/unauthorize" element={<Unauthorized />} />
+          <Route path="/unauthorized" element={<Unauthorized />} />
 
           {/*//remove later*/}
           {/*<Route path="/" element={<AdminDashboard />} />
